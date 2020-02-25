@@ -42,7 +42,7 @@ void readTwoFitnesses(double *fits, int nfits, string fname){
   //cout << "F[0]: " << fits[0] << ", F[1]" << fits[1] << endl;
 }
 
-void evalParetoScene(ga::Individual *ent, int scene, int rank, char *partialCommandFormat, char *fitnessFile){
+void evalScene(ga::Individual *ent, int scene, int rank, char *partialCommandFormat, char *fitnessFile){
 	char command[1600];
 	char batchmode[125];
 	sprintf(batchmode , "-batchmode");
@@ -54,7 +54,7 @@ void evalParetoScene(ga::Individual *ent, int scene, int rank, char *partialComm
 }
 
 
-void paretoEvalSim(ga::Individual *ent, int rank, int nScenes){
+void EvalSim(ga::Individual *ent, int rank, int nScenes){
 	char chrom[2*ga::MAX_CHROM_LENGTH];
 	char partialCommandFormat[1550];
 	//double real_chrom[12];
@@ -92,10 +92,10 @@ void paretoEvalSim(ga::Individual *ent, int rank, int nScenes){
 		ent->fitness[i] = 0;
 	}
 	for(int i = 0; i < 1/*nScenes*/; i++){
-		evalParetoScene(ent, i, rank, partialCommandFormat, fitnessFile);
+		evalScene(ent, i, rank, partialCommandFormat, fitnessFile);
 	}
 	ent->fit = 0;
-	for(int i = 0; i < 2; i++){
+	for(int i = 0; i < 1; i++){
 		ent->fit += ent->fitness[i];
 //		ent->fitness[i] /= nScenes;
 		ent->fitness[i] /= 1;

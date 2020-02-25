@@ -51,7 +51,7 @@ void SetupSlaves(int chromLength, int nCriteria){
 	while(1 == 1){
 		MPI_Recv(ent->chrom, ent->length, MPI_DOUBLE, 0, MPI_ANY_TAG, MPI_COMM_WORLD, &status);
 		if(status.MPI_TAG == DIE_TAG) break;
-		paretoEvalSim(ent, info.myId, 5);
+		EvalSim(ent, info.myId, 5);
 		//paretoEval(ent, info.myId);
 		usleep(10);
 		//MPI_Send(ent->fitness, MAX_CRITERIA, MPI_DOUBLE, 0, 0, MPI_COMM_WORLD);

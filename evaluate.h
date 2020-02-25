@@ -8,7 +8,7 @@
 
 void evaluate(ga::Individual *ent);
 void convertToString(int *vec, int size, char *chrom);
-void paretoEvalSim(ga::Individual *ent, int mpiRank, int nScenes);
+void EvalSim(ga::Individual *ent, int mpiRank, int nScenes);
 double decode(ga::Individual *ent, int start, int end);
 
 
